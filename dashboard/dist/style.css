@@ -1,0 +1,33 @@
+/* Newest-first is pure CSS: reverse the flex column and keep the header on top.
+   No React-managed DOM is moved, so kanban re-renders cannot fight this. */
+html[data-kco-order="newest"] .hermes-kanban-section[data-kco-comments] {
+  flex-direction: column-reverse;
+}
+html[data-kco-order="newest"] .hermes-kanban-section[data-kco-comments] > .hermes-kanban-section-head {
+  order: 1;
+}
+
+.hermes-kanban-section[data-kco-comments] > .hermes-kanban-section-head {
+  position: relative;
+}
+
+.kco-toggle {
+  position: absolute;
+  right: 0;
+  top: 50%;
+  transform: translateY(-50%);
+  font: inherit;
+  font-size: 0.68rem;
+  letter-spacing: 0;
+  font-weight: 500;
+  padding: 0.1rem 0.45rem;
+  color: var(--color-muted-foreground);
+  background: transparent;
+  border: 1px solid var(--color-border);
+  border-radius: var(--radius-sm, 0.25rem);
+  cursor: pointer;
+}
+.kco-toggle:hover {
+  color: var(--color-foreground);
+  border-color: var(--color-ring);
+}

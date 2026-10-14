@@ -1,0 +1,14 @@
+{
+  "name": "kanban-comment-order",
+  "label": "Kanban Comment Order",
+  "description": "Show kanban task comments newest-first (toggle back to oldest-first from the Comments header)",
+  "icon": "Package",
+  "version": "1.0.0",
+  "tab": {
+    "path": "/kanban-comment-order",
+    "position": "end",
+    "hidden": true
+  },
+  "entry": "dist/index.js",
+  "css": "dist/style.css"
+}

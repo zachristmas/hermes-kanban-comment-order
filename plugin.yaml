@@ -1,0 +1,7 @@
+name: kanban-comment-order
+version: "1.0.0"
+description: "Show kanban task comments newest-first, with a header toggle to switch back to oldest-first."
+author: Zach Christmas
+# Dashboard-only plugin: all behavior lives in dashboard/. No agent tools or hooks.
+provides_tools: []
+provides_hooks: []
