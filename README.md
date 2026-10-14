@@ -2,9 +2,11 @@
 
 [![License: MIT](https://img.shields.io/badge/license-MIT-blue.svg)](LICENSE)
 
-Newest-first comments for the [Hermes Agent](https://github.com/NousResearch/hermes-agent) kanban board.
+Newest-first comments for the [Hermes Agent](https://github.com/NousResearch/hermes-agent) kanban board, shown as bubbles in their own scroll container, with the task title pinned in the drawer header.
 
 By default the task drawer lists comments oldest-first, so on a busy task the latest update is buried below the fold. This plugin flips the list so the most recent comment is on top, and puts a toggle in the Comments header to switch back.
+
+![Comments as bubbles, newest first, in their own scroll container; title pinned beside the ticket id](docs/comments-bubbles.png)
 
 ![Comments listed newest first](docs/comments-newest.png)
 
@@ -13,9 +15,12 @@ By default the task drawer lists comments oldest-first, so on a busy task the la
 ## Features
 
 - Newest-first by default.
+- **Bubbles:** each comment is its own rounded card, with the author's name large and bold beside a coloured initial badge (the colour follows the name) and the time on the right.
+- **Own scroll container:** Comments scroll inside a box (up to 45% of the window height) with a sticky header, so a long thread no longer pushes Events and the rest of the drawer out of reach.
+- **Pinned title:** the task title sits in the drawer header beside the ticket id and stays visible while the body scrolls. Click it to edit, as before; it gives way to the built-in editor while you do.
 - One-click **Newest first ↓ / Oldest first ↑** toggle in the Comments header.
 - The choice is remembered per browser (`localStorage` key `hermes.kanban.commentOrder`), so it survives reloads.
-- Pure CSS reordering: no React-managed DOM is moved, so the board's live updates and new comments don't fight the plugin.
+- No React-managed DOM is moved: ordering is a per-row CSS `order`, so the board's live updates and new comments don't fight the plugin.
 - Leaves the "Child Results" section alone, even though the board renders it with the same row styles.
 - Works regardless of the dashboard language (matches structure, not labels).
 
@@ -35,7 +40,7 @@ Uninstall with `hermes plugins disable kanban-comment-order` and delete the dire
 
 ## How it works
 
-The built-in kanban drawer exposes no plugin slots, so the plugin watches the page with a `MutationObserver`, finds the Comments section by structure, tags it with a `data-` attribute, and `style.css` reverses that section's flex column while keeping the header on top. The toggle button is re-attached whenever the board re-renders the header.
+The built-in kanban drawer exposes no plugin slots, so the plugin watches the page with a `MutationObserver`, finds the Comments section by structure, tags it with a `data-` attribute, gives each row an index (`--kco-i`) and an avatar colour, and `style.css` orders, boxes and scrolls it. Newest-first uses `order` rather than a reversed flex column, because a reversed scroller starts at its far end. The pinned title is a small button added to the header that mirrors the built-in title and clicks it to edit. The toggle button is re-attached whenever the board re-renders the header.
 
 ## Compatibility and limitations
 

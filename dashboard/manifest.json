@@ -1,9 +1,9 @@
 {
   "name": "kanban-comment-order",
   "label": "Kanban Comment Order",
-  "description": "Show kanban task comments newest-first (toggle back to oldest-first from the Comments header)",
+  "description": "Kanban drawer comments: newest-first bubbles in their own scroll container, with the task title pinned beside the ticket id",
   "icon": "Package",
-  "version": "1.0.0",
+  "version": "1.1.0",
   "tab": {
     "path": "/kanban-comment-order",
     "position": "end",
